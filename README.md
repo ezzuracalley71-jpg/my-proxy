@@ -7,6 +7,15 @@
 
 The deployable all-in-one bundle for [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet), a highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers and more!
 
+## Quick Start (Local)
+
+```bash
+npm install
+npm start
+```
+
+Then open http://localhost:8080 in your browser (use Chromium for localhost testing; Firefox needs HTTPS).
+
 ## Deployment
 
 [![Run on Replit](https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg)](https://github.com/titaniumnetwork-dev/Ultraviolet-App/wiki/Run-on-Replit)

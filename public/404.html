@@ -1,48 +1,53 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
 		/>
-		<title>Ultraviolet | Error</title>
+		<title>Nexus — Error</title>
 		<meta
 			name="description"
-			content="Ultraviolet is a highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers. Unblock sites today!"
+			content="Nexus web proxy — the server could not route your request."
 		/>
 		<meta
 			name="theme-color"
 			media="(prefers-color-scheme: dark)"
-			content="#434c5e"
+			content="#0a0e17"
 		/>
 		<meta name="googlebot" content="noindex, nofollow, nosnippet" />
 		<base href="/" />
-		<link rel="shortcut icon" content="favicon.ico" />
+		<link rel="shortcut icon" href="favicon.ico" />
 		<link rel="stylesheet" href="index.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 
-	<body>
-		<div class="logo-wrapper left-margin">
-			<h1>Ultraviolet | Error</h1>
+	<body class="standalone">
+		<div class="bg-gradient" aria-hidden="true"></div>
+		<div class="card">
+			<div class="logo-wrapper left-margin">
+				<div class="logo-mark" style="width: 40px; height: 40px; font-size: 20px; margin: 0;">N</div>
+				<h1>Nexus — Error</h1>
+			</div>
+			<div class="desc left-margin">
+				<p>The server could not route your request.</p>
+				<p id="uv-error"></p>
+				<pre id="uv-error-code"></pre>
+				<button id="uv-register-sw" value="Register service worker">
+					Register Service Worker
+				</button>
+			</div>
+			<footer class="page-footer">
+				<a href="credits.html">Credits</a>
+				<span class="copy">Nexus</span>
+			</footer>
 		</div>
-		<div class="desc left-margin">
-			<p>The server could not route your request.</p>
-			<p id="uv-error"></p>
-			<code id="uv-error-code"></code>
-			<button id="uv-register-sw" value="Register service worker">
-				Register ServiceWorker
-			</button>
-		</div>
-		<footer>
-			<a
-				title="License information"
-				href="credits.html"
-				style="margin-left: auto"
-				>Credits</a
-			>
-			<span>Ultraviolet &copy; TN 2022</span>
-		</footer>
 		<script src="uv/uv.bundle.js"></script>
 		<script src="uv/uv.config.js"></script>
 		<script src="register-sw.js"></script>

@@ -1,4 +1,5 @@
-import { join } from "node:path";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { hostname } from "node:os";
 import { createServer } from "node:http";
 import express from "express";
@@ -8,19 +9,24 @@ import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const app = express();
+
 // Load our publicPath first and prioritize it over UV.
-app.use(express.static("./public"));
+app.use(express.static(join(__dirname, "../public")));
+
 // Load vendor files last.
-// The vendor's uv.config.js won't conflict with our uv.config.js inside the publicPath directory.
 app.use("/uv/", express.static(uvPath));
 app.use("/epoxy/", express.static(epoxyPath));
 app.use("/baremux/", express.static(baremuxPath));
 
+
 // Error for everything else
 app.use((req, res) => {
 	res.status(404);
-	res.sendFile("./public/404.html");
+	res.sendFile(join(__dirname, "../public/404.html"));
 });
 
 const server = createServer();
@@ -28,6 +34,9 @@ const server = createServer();
 server.on("request", (req, res) => {
 	res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
 	res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+	res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0");
+	res.setHeader("Pragma", "no-cache");
+	res.setHeader("Surrogate-Control", "no-store");
 	app(req, res);
 });
 server.on("upgrade", (req, socket, head) => {
@@ -45,8 +54,6 @@ if (isNaN(port)) port = 8080;
 server.on("listening", () => {
 	const address = server.address();
 
-	// by default we are listening on 0.0.0.0 (every interface)
-	// we just need to list a few
 	console.log("Listening on:");
 	console.log(`\thttp://localhost:${address.port}`);
 	console.log(`\thttp://${hostname()}:${address.port}`);

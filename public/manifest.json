@@ -1,0 +1,21 @@
+{
+  "name": "Nexus — Web Proxy",
+  "short_name": "Nexus",
+  "description": "A fast, private web proxy. Browse freely without restrictions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06080d",
+  "theme_color": "#00d4ff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/uv.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
