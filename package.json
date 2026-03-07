@@ -1,7 +1,7 @@
 {
-	"name": "uv-app",
+	"name": "nexus-proxy",
 	"version": "1.0.0",
-	"description": "Ultraviolet instance",
+	"description": "Nexus - A fast, private web proxy",
 	"type": "module",
 	"engines": {
 		"node": ">=18.0.0"
