@@ -17,7 +17,8 @@
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
-		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="assets/nexus-mark.svg" />
+		<link rel="alternate icon" href="favicon.ico" />
 		<link rel="manifest" href="manifest.json" />
 		<link rel="stylesheet" href="index.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -200,10 +201,7 @@
 
 		<main class="card">
 			<header class="brand">
-				<div class="logo-ring" aria-hidden="true">
-					<div class="logo-mark">N</div>
-				</div>
-				<h1 class="brand-name">Nexus</h1>
+				<img class="brand-logo" src="assets/nexus-logo.svg" alt="Nexus logo" />
 				<p class="tagline">Private web proxy</p>
 				<div class="status-badge">
 					<span class="status-dot"></span>
@@ -346,7 +344,7 @@
 
 		<div id="pin-overlay" hidden style="position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;background:rgba(6,8,13,0.98);backdrop-filter:blur(12px);padding:24px">
 			<div style="background:var(--bg-card);border:1px solid var(--bg-card-border);border-radius:14px;padding:40px 32px;text-align:center;max-width:360px;box-shadow:var(--shadow)">
-				<div style="width:56px;height:56px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:var(--accent);background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,212,255,0.05));border:1px solid var(--accent-dim);border-radius:14px">N</div>
+				<img src="assets/nexus-mark.svg" alt="Nexus mark" style="width:56px;height:56px;margin:0 auto 16px;display:block;filter:drop-shadow(0 0 10px rgba(41,214,255,0.35))" />
 				<h2 style="margin:0 0 6px;font-size:1.4rem;color:var(--text)">Nexus is locked</h2>
 				<p style="margin:0 0 24px;font-size:0.9rem;color:var(--text-muted)">Enter PIN and press Enter</p>
 				<input id="pin-input" type="text" autocomplete="off" placeholder="PIN" style="width:100%;padding:12px 16px;font-family:var(--font);font-size:1.1rem;letter-spacing:0.2em;text-align:center;color:var(--text);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;outline:none" />

@@ -2,6 +2,6 @@
 	"name": "Nexus Proxy",
 	"description": "Node.js Nexus web proxy instance",
 	"repository": "https://github.com/ezzuracalley71-jpg/my-proxy",
-	"logo": "https://raw.githubusercontent.com/titaniumnetwork-dev/Ultraviolet-Static/main/public/uv.png",
+	"logo": "https://raw.githubusercontent.com/ezzuracalley71-jpg/my-proxy/main/public/assets/nexus-mark.svg",
 	"keywords": ["proxy", "nexus", "ultraviolet"]
 }

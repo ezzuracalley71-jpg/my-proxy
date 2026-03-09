@@ -1,0 +1,39 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Nexus logo</title>
+  <desc id="desc">Neon cyan Nexus logo with an infinity-style symbol and wordmark.</desc>
+  <defs>
+    <linearGradient id="g1" x1="210" y1="40" x2="430" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7BF7FF"/>
+      <stop offset="0.45" stop-color="#29D6FF"/>
+      <stop offset="1" stop-color="#4376FF"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="430" y1="40" x2="210" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8BFFFF"/>
+      <stop offset="0.45" stop-color="#3AE8FF"/>
+      <stop offset="1" stop-color="#6E9CFF"/>
+    </linearGradient>
+    <linearGradient id="word" x1="190" y1="320" x2="960" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#89F8FF"/>
+      <stop offset="0.45" stop-color="#32D8FF"/>
+      <stop offset="1" stop-color="#5CA8FF"/>
+    </linearGradient>
+    <filter id="glow" x="0" y="0" width="1200" height="420" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="11" result="b2"/>
+      <feMerge>
+        <feMergeNode in="b2"/>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M240 80C300 20 390 20 450 80C510 140 510 230 450 290C390 350 300 350 240 290C180 230 180 140 240 80Z" stroke="url(#g1)" stroke-width="24"/>
+    <path d="M450 80C390 20 300 20 240 80C180 140 180 230 240 290C300 350 390 350 450 290C510 230 510 140 450 80Z" stroke="url(#g2)" stroke-width="24"/>
+    <path d="M255 257L435 113" stroke="url(#g1)" stroke-width="22"/>
+    <path d="M255 113L435 257" stroke="url(#g2)" stroke-width="22"/>
+
+    <text x="150" y="398" font-family="Outfit, Segoe UI, sans-serif" font-size="140" font-weight="700" letter-spacing="6" fill="url(#word)">NEXUS</text>
+  </g>
+</svg>

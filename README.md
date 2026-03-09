@@ -1,5 +1,9 @@
 # Nexus Proxy
 
+<p align="center">
+  <img src="./public/assets/nexus-logo.svg" alt="Nexus logo" width="560" />
+</p>
+
 A fast, private web proxy with a modern UI and configurable browsing settings.
 This project is built on top of the Ultraviolet ecosystem and related MercuryWorkshop tooling.
 

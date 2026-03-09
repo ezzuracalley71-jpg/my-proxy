@@ -1,0 +1,30 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Nexus mark</title>
+  <defs>
+    <linearGradient id="g1" x1="120" y1="70" x2="392" y2="342" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7BF7FF"/>
+      <stop offset="0.45" stop-color="#29D6FF"/>
+      <stop offset="1" stop-color="#4376FF"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="392" y1="70" x2="120" y2="342" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8BFFFF"/>
+      <stop offset="0.45" stop-color="#3AE8FF"/>
+      <stop offset="1" stop-color="#6E9CFF"/>
+    </linearGradient>
+    <filter id="glow" x="0" y="0" width="512" height="512" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="11" result="b2"/>
+      <feMerge>
+        <feMergeNode in="b2"/>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M146 119C200 65 312 65 366 119C420 173 420 285 366 339C312 393 200 393 146 339C92 285 92 173 146 119Z" stroke="url(#g1)" stroke-width="28"/>
+    <path d="M366 119C312 65 200 65 146 119C92 173 92 285 146 339C200 393 312 393 366 339C420 285 420 173 366 119Z" stroke="url(#g2)" stroke-width="28"/>
+    <path d="M158 309L354 153" stroke="url(#g1)" stroke-width="24"/>
+    <path d="M158 153L354 309" stroke="url(#g2)" stroke-width="24"/>
+  </g>
+</svg>
