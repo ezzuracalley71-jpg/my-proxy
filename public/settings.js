@@ -6,6 +6,18 @@ function applyTheme(theme) {
 	document.documentElement.setAttribute("data-theme", theme || "system");
 }
 
+function applyAccentColor(color) {
+	if (color && color !== "default") {
+		document.documentElement.style.setProperty("--accent", color);
+		document.documentElement.style.setProperty("--accent-dim", color + "80");
+		document.documentElement.style.setProperty("--accent-glow", color + "33");
+	} else {
+		document.documentElement.style.removeProperty("--accent");
+		document.documentElement.style.removeProperty("--accent-dim");
+		document.documentElement.style.removeProperty("--accent-glow");
+	}
+}
+
 const FAVICONS = {
 	google: "https://www.google.com/favicon.ico",
 	drive: "https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico",
@@ -47,7 +59,20 @@ function loadSettings() {
 		cloakFaviconUrl: "",
 		cloakSync: false,
 		abPopup: false,
+		adBlock: true,
 	};
+}
+
+// Load global settings from server and merge with local settings
+async function loadGlobalSettings() {
+	try {
+		const res = await fetch('/api/global-settings');
+		const globalSettings = await res.json();
+		const localSettings = loadSettings();
+		return { ...globalSettings, ...localSettings };
+	} catch (e) {
+		return loadSettings();
+	}
 }
 
 function saveSettings(s) {
@@ -114,14 +139,35 @@ function resetCloak() {
 	const abPopup = document.getElementById("ab-popup");
 	const frame = document.getElementById("uv-frame");
 
-	let settings = loadSettings();
-
+	// Load global settings from server merged with local settings
+	loadGlobalSettings().then(settings => {
 	// Apply theme immediately
 	applyTheme(settings.theme || "system");
+	applyAccentColor(settings.accentColor || "#00d4ff");
 
 	// Restore UI
 	if (themeSelect) themeSelect.value = settings.theme || "system";
 	if (proxySelect) proxySelect.value = settings.proxy || "uv";
+	const adBlockToggle = document.getElementById("adblock-toggle");
+	if (adBlockToggle) adBlockToggle.checked = settings.adBlock !== false;
+
+	// Color picker buttons
+	document.querySelectorAll(".color-btn").forEach(btn => {
+		btn.addEventListener("click", () => {
+			const color = btn.getAttribute("data-color");
+			applyAccentColor(color);
+			settings.accentColor = color;
+			saveSettings(settings);
+			// Update active state
+			document.querySelectorAll(".color-btn").forEach(b => b.classList.remove("active"));
+			btn.classList.add("active");
+		});
+		// Set active state for saved color
+		if (btn.getAttribute("data-color") === settings.accentColor) {
+			btn.classList.add("active");
+		}
+	});
+
 	cloakTitle.checked = settings.cloakTitle;
 	cloakTitleValue.value = settings.cloakTitleValue || "";
 	cloakFavicon.checked = settings.cloakFavicon;
@@ -132,6 +178,28 @@ function resetCloak() {
 	if (settings.cloakFaviconPreset === "custom") {
 		cloakFaviconUrl.style.display = "block";
 	}
+
+	// Tab switching
+	const tabs = document.querySelectorAll('.settings-tab');
+	const pages = document.querySelectorAll('.settings-page');
+	
+	tabs.forEach(tab => {
+		tab.addEventListener('click', () => {
+			const tabId = tab.getAttribute('data-tab');
+			
+			// Update active tab
+			tabs.forEach(t => t.classList.remove('active'));
+			tab.classList.add('active');
+			
+			// Show corresponding page
+			pages.forEach(page => {
+				page.classList.remove('active');
+				if (page.id === 'settings-' + tabId) {
+					page.classList.add('active');
+				}
+			});
+		});
+	});
 
 	// Toggle panel
 	toggle.addEventListener("click", (e) => {
@@ -163,6 +231,7 @@ function resetCloak() {
 			cloakFaviconUrl: cloakFaviconUrl.value.trim(),
 			cloakSync: cloakSync.checked,
 			abPopup: abPopup ? abPopup.checked : false,
+			adBlock: document.getElementById('adblock-toggle') ? document.getElementById('adblock-toggle').checked : true,
 			theme: themeSelect ? themeSelect.value : "system",
 			};
 			saveSettings(settings);
@@ -177,6 +246,7 @@ function resetCloak() {
 		cloakFaviconUrl.addEventListener("input", persist);
 		cloakSync.addEventListener("change", persist);
 		if (abPopup) abPopup.addEventListener("change", persist);
+		if (adBlockToggle) adBlockToggle.addEventListener("change", persist);
 		if (themeSelect) themeSelect.addEventListener("change", persist);
 		if (proxySelect) proxySelect.addEventListener("change", persist);
 
@@ -222,4 +292,5 @@ function resetCloak() {
 			location.reload();
 		});
 	}
+	}); // end loadGlobalSettings.then
 })();

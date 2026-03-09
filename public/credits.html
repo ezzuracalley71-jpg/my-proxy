@@ -28,11 +28,47 @@
 	</head>
 
 	<body class="standalone">
+		<style>
+			.made-with-love {
+				margin: 30px 0 40px 0;
+				font-size: 1.4rem;
+				text-align: center;
+				background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				animation: gradient-shift 3s ease infinite;
+				background-size: 300% 300%;
+				font-weight: 600;
+				letter-spacing: 0.5px;
+			}
+			.made-with-love .heart {
+				display: inline-block;
+				animation: pulse 1s ease infinite;
+				-webkit-text-fill-color: #ff6b6b;
+			}
+			.made-with-love .name {
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+			}
+			@keyframes gradient-shift {
+				0%, 100% { background-position: 0% 50%; }
+				50% { background-position: 100% 50%; }
+			}
+			@keyframes pulse {
+				0%, 100% { transform: scale(1); }
+				50% { transform: scale(1.2); }
+			}
+		</style>
 		<div class="bg-gradient" aria-hidden="true"></div>
 		<div class="card">
 			<div class="logo-wrapper left-margin">
 				<div class="logo-mark" style="width: 40px; height: 40px; font-size: 20px; margin: 0;">N</div>
 				<h1>Nexus — Credits</h1>
+			</div>
+			<div class="made-with-love">
+				<span class="heart">❤</span> Made by <span class="name">unknown</span> with love
 			</div>
 			<div class="desc left-margin">
 			<div class="credit">

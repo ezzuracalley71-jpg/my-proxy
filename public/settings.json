@@ -1,0 +1,15 @@
+{
+  "theme": "light",
+  "accentColor": "#feca57",
+  "cloakTitle": false,
+  "cloakTitleValue": "Google",
+  "cloakFavicon": false,
+  "cloakFaviconPreset": "google",
+  "cloakFaviconUrl": "",
+  "cloakSync": false,
+  "abPopup": false,
+  "proxy": "uv",
+  "urlBar": true,
+  "animations": true,
+  "adBlock": true
+}
