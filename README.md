@@ -1,7 +1,7 @@
 # Nexus Proxy
 
 <p align="center">
-  <img src="./public/assets/Nexus.jpg" alt="Nexus logo" width="560" />
+  <img src="./public/assets/nexus-ui-2.png" alt="Nexus logo" width="560" />
 </p>
 
 A fast, private web proxy with a modern UI and configurable browsing settings.

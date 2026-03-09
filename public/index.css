@@ -159,9 +159,12 @@ body {
 
 .brand-logo {
 	display: block;
-	width: min(420px, 88vw);
-	height: auto;
+	width: min(440px, 92vw);
+	height: min(230px, 48vw);
+	object-fit: cover;
+	object-position: center 42%;
 	margin: 0 auto 14px;
+	border-radius: 12px;
 	filter: drop-shadow(0 0 14px rgba(41, 214, 255, 0.35));
 }
 
