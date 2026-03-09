@@ -322,6 +322,20 @@
 					<svg class="tile-icon" viewBox="0 0 24 24" fill="#FF6B00"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
 					<span>SFlix</span>
 				</button>
+				<button type="button" class="tile" data-url="https://freeflix.site" title="FreeFlix">
+					<svg class="tile-icon" viewBox="0 0 24 24" fill="#00d4ff"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+					<span>FreeFlix</span>
+				</button>
+			</div>
+
+			<div class="bookmark-builder">
+				<h3>Custom Bookmarks</h3>
+				<form id="custom-bookmark-form" class="bookmark-form">
+					<input id="custom-bookmark-name" type="text" class="settings-input" placeholder="Name (e.g., School Portal)" maxlength="28" />
+					<input id="custom-bookmark-url" type="text" class="settings-input" placeholder="https://example.com" />
+					<button type="submit" class="settings-btn-sm">Add Bookmark</button>
+				</form>
+				<div class="quick-tiles" id="custom-bookmarks"></div>
 			</div>
 
 			<footer class="page-footer">

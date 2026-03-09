@@ -301,6 +301,56 @@ body {
 	transform: scale(1.15);
 }
 
+.tile.custom-tile {
+	position: relative;
+}
+
+.tile-remove {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	width: 18px;
+	height: 18px;
+	border: none;
+	border-radius: 999px;
+	background: rgba(255, 107, 107, 0.22);
+	color: #ff9a9a;
+	font-size: 12px;
+	line-height: 18px;
+	cursor: pointer;
+	padding: 0;
+}
+
+.tile-remove:hover {
+	background: rgba(255, 107, 107, 0.35);
+	color: #ffd3d3;
+}
+
+.bookmark-builder {
+	margin-top: 20px;
+	padding-top: 12px;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bookmark-builder h3 {
+	margin: 0 0 10px;
+	font-size: 0.92rem;
+	color: var(--text-muted);
+}
+
+.bookmark-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr auto;
+	gap: 8px;
+	margin-bottom: 10px;
+}
+
+@media (max-width: 580px) {
+	.bookmark-form {
+		grid-template-columns: 1fr;
+	}
+}
+
 .search-form {
 	display: flex;
 	flex-direction: column;
