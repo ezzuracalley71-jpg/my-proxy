@@ -29,17 +29,40 @@ const FAVICONS = {
 
 const DEFAULT_TITLE = "Nexus — Web Proxy";
 let faviconEl = null;
+let shortcutFaviconEl = null;
 
 function getFaviconEl() {
 	if (!faviconEl) {
-		faviconEl = document.querySelector('link[rel="shortcut icon"]') || document.querySelector('link[rel="icon"]');
+		faviconEl = document.getElementById("dynamic-favicon");
 		if (!faviconEl) {
 			faviconEl = document.createElement("link");
-			faviconEl.rel = "shortcut icon";
+			faviconEl.id = "dynamic-favicon";
+			faviconEl.rel = "icon";
 			document.head.appendChild(faviconEl);
 		}
+		// Ensure dynamic updates are not blocked by a stale type like image/svg+xml
+		faviconEl.removeAttribute("type");
 	}
 	return faviconEl;
+}
+
+function getShortcutFaviconEl() {
+	if (!shortcutFaviconEl) {
+		shortcutFaviconEl = document.getElementById("dynamic-shortcut-favicon");
+		if (!shortcutFaviconEl) {
+			shortcutFaviconEl = document.createElement("link");
+			shortcutFaviconEl.id = "dynamic-shortcut-favicon";
+			shortcutFaviconEl.rel = "shortcut icon";
+			document.head.appendChild(shortcutFaviconEl);
+		}
+		shortcutFaviconEl.removeAttribute("type");
+	}
+	return shortcutFaviconEl;
+}
+
+function setFavicon(href) {
+	getFaviconEl().href = href;
+	getShortcutFaviconEl().href = href;
 }
 
 function loadSettings() {
@@ -84,7 +107,7 @@ function saveSettings(s) {
 function applyCloak(settings, frame) {
 	if (!settings.cloakTitle && !settings.cloakFavicon && !settings.cloakSync) {
 		document.title = DEFAULT_TITLE;
-		getFaviconEl().href = "/favicon.ico";
+		setFavicon("/favicon.ico");
 		return;
 	}
 
@@ -117,12 +140,12 @@ function applyCloak(settings, frame) {
 	}
 
 	document.title = title;
-	getFaviconEl().href = favicon;
+	setFavicon(favicon);
 }
 
 function resetCloak() {
 	document.title = DEFAULT_TITLE;
-	getFaviconEl().href = "/favicon.ico";
+	setFavicon("/favicon.ico");
 }
 
 (function () {
